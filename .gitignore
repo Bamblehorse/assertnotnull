@@ -1,0 +1,7 @@
+.idea
+*.iml
+*.db
+*.pyc
+active.py
+migrations
+logs
