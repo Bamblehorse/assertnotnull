@@ -137,6 +137,7 @@ nav#menu {
 	width: 100%;
 	position: fixed;
     box-shadow: 0 3px 5px 0px #000;
+    z-index: 2;
 }
 
 nav a:hover, nav a:visited {
@@ -168,10 +169,23 @@ div#main {
     background-size: cover;
 
 }
-div#contenu {
-	width: 75%;
-	padding: 60px 0 70px 15%;
+
+div#content-background {
+    min-height: 90%;
+    background-color: rgba(200,200,200,0.3);
+    position: fixed;
+    width: 980px;
+    left: 50%;
+    margin: 0px 0 0 -490px;
+}
+
+div#content {
     font-family: 'Lora', serif;
+    top: 30px;
+    margin-bottom: -20px;
+    position: relative;
+    padding: 20px 10px 80px;
+    z-index: 1;
 }
 
 footer {
@@ -187,6 +201,7 @@ footer {
     font-size: 16px;
     font-family: 'Playball', cursive;
     box-shadow: 0 0 2px 2px #000;
+    z-index: 2;
 }
 
 #tweet {
