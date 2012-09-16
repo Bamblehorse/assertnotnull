@@ -1,0 +1,59 @@
+{% load twitter_tag %}
+{% get_tweets for 'assertnotnull' as tweets limit 1 %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="../static/css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+	<script src="../static/js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+<header>
+<nav id="menu">
+<a href="#">Blog</a>
+<a href="#">Projets</a>
+<a href="#">Photos</a>
+<a href="#">Curriculum</a>
+<a href="qui/   ">Qui?</a>
+</nav>
+</header>
+<div role="main" id="main">
+<div id="contenu">
+{% block contenu %}
+
+{% endblock %}
+</div>
+</div>
+<footer>
+    <img src="../static/images/social_linked_in.png"/>
+    <a href="http://twitter.com/assertnotnull" target="_blank"><img src="../static/images/twitter2.png"/></a>
+    {% with tweet=tweets.pop %}
+        <div class="triangle-right left">
+        <a href="http://twitter.com/assertnotnull" target="_blank">{{ tweet.user.screen_name }}</a> :
+        {{ tweet.html|safe|default:'Twitter' }}
+        </div>
+    {% endwith %}
+
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../static/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+<script src="../static/js/plugins.js"></script>
+<script src="../static/js/script.js"></script>
+</body>
+</html>

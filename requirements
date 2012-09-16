@@ -3,4 +3,5 @@ south
 django-taggit
 MySQL-python
 mezzanine
-jinja
+jinja2
+django-twitter-tag

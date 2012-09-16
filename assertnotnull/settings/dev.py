@@ -1,4 +1,4 @@
-from assertnotnull.settings2 import *
+from assertnotnull.settings import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
