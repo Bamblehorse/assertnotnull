@@ -14,15 +14,15 @@ import re, sys, os
 
 # globals
 
-env.project = 'infojdemapps'
-env.apps = ['nouvellesgeo', 'pointeau', 'essence']
+env.project = 'assertnotnull'
+env.apps = ['']
 
 # environments
 
 def prod():
     """Select the prod environment for future commands."""
-    env.hosts = ['infojdem.com']
-    env.user = 'pgauthier'
+    env.hosts = ['tbd']
+    env.user = 'assertnotnull'
     env.python = '/var/local/python/env/%s/bin/python' % env.project
     env.base_dir = '/var/local/python/' # base_dir should contain the project
     _env_init()

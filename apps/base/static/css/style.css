@@ -130,7 +130,7 @@ div#topbar {
 }
 
 nav#menu {	
-	background: url(../images/testdesign.png) repeat;
+	background: url(../images/background-cardboard.png) repeat;
 	display: block;
 	float: left;
 	text-align: center;
@@ -189,7 +189,7 @@ div#content {
 }
 
 footer {
-	background: url(../images/testdesign.png) repeat;
+	background: url(../images/background-cardboard.png) repeat;
 	height: 60px;
 	text-align: center;
 	color:#CC0000;

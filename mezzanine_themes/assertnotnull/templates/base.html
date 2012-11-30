@@ -1,0 +1,92 @@
+{% load twitter_tag %}
+{% load pages_tags mezzanine_tags i18n %}
+{% get_tweets for 'assertnotnull' as tweets limit 1 %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/960_12_col.css">
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+	<script src="{{ STATIC_URL }}js/libs/modernizr-2.5.3.min.js"></script>
+
+    {% ifinstalled mezzanine.blog %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url blog_post_feed rss %}">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url blog_post_feed atom %}">
+    {% endifinstalled %}
+</head>
+<body>
+<header>
+<nav id="menu">
+<a href="/blog/">Blog</a>
+<a href="#">Projets</a>
+<a href="#">Photos</a>
+<a href="#">Curriculum</a>
+<a href="/qui/">Qui?</a>
+</nav>
+</header>
+<div role="main" id="main">
+    <div id="content-background" class="container_12"></div>
+    <div id="content" class="container_12">
+{% block body %}
+    {# Body and main are required for mezzanine conent #}
+    {% block main %}
+    {% endblock %}
+{% endblock %}
+</div>
+</div>
+<footer>
+    <img src="{{ STATIC_URL }}images/social_linked_in.png"/>
+    <a href="http://twitter.com/assertnotnull" target="_blank"><img src="{{ STATIC_URL }}images/twitter2.png"/></a>
+    {% if tweets.count != None %}
+    {% with tweet=tweets.pop %}
+        <div class="triangle-right left">
+        <a href="http://twitter.com/assertnotnull" target="_blank">{{ tweet.user.screen_name }}</a> :
+        {{ tweet.html|safe|default:'Twitter' }}
+        </div>
+    {% endwith %}
+    {% else %}
+        <div class="triangle-right left">
+            <a href="http://twitter.com/assertnotnull" target="_blank">Assertnotnull</a> :
+            My tweet
+        </div>
+    {% endif %}
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+<script src="{{ STATIC_URL }}js/plugins.js"></script>
+<script src="{{ STATIC_URL }}js/script.js"></script>
+
+{% block base_libs %}
+{% compress js %}
+    <script src="{{ STATIC_URL }}js/vendor/bootstrap.js"></script>
+{% endcompress %}
+{% endblock %}
+
+{% block extra_libs %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}js/main.js"></script>
+    {% endcompress %}
+{% endblock %}
+
+{% block editable %}
+    {% editable_loader %}
+{% endblock %}
+
+</body>
+</html>
